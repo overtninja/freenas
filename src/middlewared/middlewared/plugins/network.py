@@ -2384,7 +2384,7 @@ async def attach_interface(middleware, iface):
         return
 
     # We dont handle the following interfaces in middlewared
-    if iface.startswith(('epair', 'tun', 'tap')):
+    if iface.startswith(('epair', 'tun', 'tap', 'veth', 'kube-bridge')):
         return
 
     iface = await middleware.call('interface.query', [('name', '=', iface)])
